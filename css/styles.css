@@ -101,6 +101,24 @@ header {
   padding-bottom: 32px;
 }
 
+.site-nav-link {
+  position: relative;
+}
+
+.site-nav-link.current::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  margin: 0;
+  padding: 0;
+  border-radius: 2px;
+  background-color: var(--accent-color);
+}
+
 .site-nav .item {
   margin-right: 50px;
 }
@@ -265,18 +283,60 @@ header {
   padding: 10px 32px;
 }
 
-/*-------------------- Стилизация заголовка h2 -------------------*/
+/*-------- Стилизация блока чем мы занимаемся ----------*/
+.about-item {
+  position: relative;
+}
 
-/* .privilege,
-.about,
-.team h2 h1 {
-    color: #212121;
+.about-thumb {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 370px;
+  height: 70px;
+
+  background-color: rgba(47, 48, 58, 0.8);
+}
+
+.about-text {
+  color: var(--body-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 14px;
+  line-height: 1.14;
+}
+
+/* .about-text::before {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 70px;
+
+  background-color: rgba(47, 48, 58, 0.8);
+}
+
+.about-text {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+
+  color: var(--body-color);
 } */
-
 /*----------------- Стилизация заголовка р ------------------*/
 
 .privilege p,
-.about p,
 .team p {
   color: var(--primary-text-color);
 }
@@ -299,50 +359,6 @@ header {
   font-size: 14px;
   line-height: 1.71;
 }
-
-/* .item-first::before {
-    display: block;
-    content: '';
-    height: 120px;
-    background-image: url('/images/antenna1.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #F5F4FA;
-    border-radius: 4px;
-}
-
-.item-second::before {
-    display: block;
-    content: '';
-    height: 120px;
-    background-image: url('/images/clock1.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #F5F4FA;
-    border-radius: 4px;
-}
-
-.item-third::before {
-    display: block;
-    content: '';
-    height: 120px;
-    background-image: url('/images/diagram1.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #F5F4FA;
-    border-radius: 4px;
-}
-
-.item-fourth::before {
-    display: block;
-    content: '';
-    height: 120px;
-    background-image: url('/images/astronaut1.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #F5F4FA;
-    border-radius: 4px;
-} */
 
 .privilege-div {
   height: 120px;
@@ -570,10 +586,31 @@ header {
   justify-content: center;
 }
 
-/* .portfolio-item:hover,
-.portfolio-item:focus {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
+..portfolio-thumb {
+  position: relative;
+}
+
+.portfolio-thumb::before {
+  display: inline-block;
+  position: absolute;
+
+  content: '';
+  width: 50px;
+  height: 50px;
+  background-color: var(--accent-color);
+}
+
+/* .image-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 63px 24px;
+    color: var(--body-color);
+    background: rgba(33, 150, 243, 0.9);
+    font-size: 18px;
+    line-height: 1.56;
+    letter-spacing: 0.03em;
+    transition: transform var(--transition-duration) var(--transition-timing-function);
 } */
 
 .portfolio-menu li {
