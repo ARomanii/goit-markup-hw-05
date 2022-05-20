@@ -70,7 +70,7 @@
             ЭФФЕКТИВНЫЕ РЕШЕНИЯ<br />
             ДЛЯ ВАШЕГО БИЗНЕСА
           </h1>
-          <button class="hero-button" type="button">Заказать услугу</button>
+          <button class="hero-button" type="button" data-modal-open>Заказать услугу</button>
         </div>
       </section>
 
@@ -444,11 +444,15 @@
         </div>
       </div>
     </footer>
-    <div class="backdrop">
+    <div class="backdrop is-hidden">
       <div class="model-wrapper">
-        <button class="model-btn"></button>
-        <form class="modal-form"></form>
+        <button class="model-btn" data-modal-close>
+          <svg width="14" height="14">
+            <use href="./images/symbol-defs.svg#icon-close"></use>
+          </svg>
+        </button>
       </div>
     </div>
+    <script src="./js/modal.js"></script>
   </body>
 </html>
