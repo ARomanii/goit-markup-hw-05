@@ -41,6 +41,8 @@ img {
   --accent-color: #2196f3;
   --body-color: #ffffff;
   --color-footer: #2f303a;
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-duration: 250ms;
 }
 
 body {
@@ -99,6 +101,7 @@ header {
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
+  transition: color var(--transition-duration) var(--transition-timing-function);
 }
 
 .site-nav-link {
@@ -186,6 +189,7 @@ header {
 .studio-link {
   display: flex;
   align-items: center;
+  transition: color var(--transition-duration) var(--transition-timing-function);
 }
 
 .studio-list {
@@ -303,12 +307,17 @@ header {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
+
+  transition: opacity var(--transition-duration) var(--transition-timing-function);
 }
 
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
-  visibility: hidden;
+}
+
+.backdrop.is-hidden .model-wrapper {
+  transform: translate(-50%, -50%) scale(0.9);
 }
 
 .model-wrapper {
@@ -317,12 +326,14 @@ header {
   top: 50%;
   transform: translate(-50%, -50%) scale(1);
   background-color: var(--body-color);
-  width: 528px;
-  height: 581px;
+  min-width: 528px;
+  min-height: 581px;
 
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+  /* box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  border-radius: 4px; */
+
+  transition: transform var(--transition-duration) var(--transition-timing-function);
 }
 
 .model-btn {
@@ -330,15 +341,15 @@ header {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   width: 30px;
   height: 30px;
   cursor: pointer;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color var(--transition-duration) var(--transition-timing-function);
 }
 
 /*-------- Стилизация блока чем мы занимаемся ----------*/
@@ -529,9 +540,8 @@ header {
   height: 44px;
   background-color: var(--body-color);
   border-radius: 50%;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition-duration) var(--transition-timing-function),
+    background-color var(--transition-duration) var(--transition-timing-function);
 }
 
 .socials-link:hover,
@@ -580,7 +590,8 @@ header {
 
   border: 1px solid #afb1b8;
   border-radius: 4px;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition-duration) var(--transition-timing-function),
+    border-color var(--transition-duration) var(--transition-timing-function);
 }
 
 .customers-item {
@@ -627,9 +638,9 @@ header {
   border-radius: 4px;
   padding: 6px 22px;
 
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow var(--transition-duration) var(--transition-timing-function),
+    background-color var(--transition-duration) var(--transition-timing-function),
+    color var(--transition-duration) var(--transition-timing-function);
 }
 
 .portfolio-button:hover,
@@ -672,36 +683,24 @@ header {
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.portfolio-item:hover .portfolio-thumb::before {
-  transform: translateY(0);
+.portfolio-item:hover .image-text-overlay,
+.portfolio-item:focus .image-text-overlay {
+  transform: translate(0, -100%);
 }
 
-.image-text {
+.image-text-overlay {
   position: absolute;
   width: 100%;
   height: 100%;
   padding: 63px 24px;
-  color: var(--white-color);
+  color: var(--body-color);
   background: rgba(33, 150, 243, 0.9);
   font-size: 18px;
   line-height: 1.56;
   letter-spacing: 0.03em;
-  z-index: 1;
+
   transition: transform var(--transition-duration) var(--transition-timing-function);
 }
-
-/* .image-text {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    padding: 63px 24px;
-    color: var(--body-color);
-    background: rgba(33, 150, 243, 0.9);
-    font-size: 18px;
-    line-height: 1.56;
-    letter-spacing: 0.03em;
-    transition: transform var(--transition-duration) var(--transition-timing-function);
-} */
 
 .portfolio-menu li {
   margin-right: 8px;
@@ -807,7 +806,7 @@ header {
 
 address {
   font-style: normal;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition-duration) var(--transition-timing-function);
 }
 
 .footer-mailo {
@@ -815,7 +814,7 @@ address {
 }
 
 .footer-mailo .nav.link {
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition-duration) var(--transition-timing-function);
 }
 
 .footer-address {
@@ -855,6 +854,7 @@ address {
   height: 44px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
+  transition: background-color var(--transition-duration) var(--transition-timing-function);
 }
 
 .footer-socials-link:hover,
